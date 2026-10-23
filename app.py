@@ -17,3 +17,11 @@ def ask(question: str, notes: str) -> str:
         messages=[{"role": "user", "content": f"Notes:\n{notes}\n\nQuestion: {question}"}],
     )
     return reply.content[0].text
+
+
+if __name__ == "__main__":
+    import sys
+
+    from notes import load_notes
+
+    print(ask(sys.argv[2], load_notes(sys.argv[1])))
