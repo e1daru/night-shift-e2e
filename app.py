@@ -14,6 +14,7 @@ def ask(question: str, notes: str) -> str:
     reply = client.messages.create(
         model="claude-sonnet-5-5",
         max_tokens=400,
+        system="Answer from the notes only, and end with the note's file name in brackets.",
         messages=[{"role": "user", "content": f"Notes:\n{notes}\n\nQuestion: {question}"}],
     )
     return reply.content[0].text
